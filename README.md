@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# TAKOFLY
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[TakoFly](https://netlify.app/) proyecto desarrollado en React y CSS, por parte del frontend.
 
-## Available Scripts
+## Inicializando el proyecto
 
-In the project directory, you can run:
+#### Dependecias
 
-### `npm start`
+- Es necesario instalar las dependencias, tan pronto se clone el proyecto.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Librerias utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```shell
+npm i axios
+npm i react-router-dom
+```
 
-### `npm test`
+```shell
+$ npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Una vez hecho esto, crear un archivo `.env` para generar las variables de entorno.
 
-### `npm run build`
+`.env`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+REACT_APP_BACKEND_URL='API_BACKEND'
+REACT_APP_APIKEY='APP_APIKEY'
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Para correr la aplicación de manera local, deberá ejecutar:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run start`
 
-### `npm run eject`
+puede visualizar el proyecto en el navegador:
+[http://localhost:3000](http://localhost:3000).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##Estructura del proyecto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**El proyecto se estructura de la siguiente manera:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- public
+- src
+  - componentes
+  - config
+  - context
+  - routes
+- Hoja de estilos
+- Archivo principal de JS
+- Router
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Páginas de TakoFly
 
-## Learn More
+- Home
+- Flights
+- Reservations
+- User
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Home
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+El home es una página que se renderiza solamente cuando el usuario busca opciones de vuelo [Home](http://localhost:3000)
 
-### Code Splitting
+#### Flights
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Flights renderiza la información general de los vuelos que coinciden con su búsqueda, permitiendole al usuario elegir vuelo. [Vuelos](http://localhost:3000/flights)
 
-### Analyzing the Bundle Size
+Dentro de esta vista se renderiza el carrito de compras con los vuelos que el usuario ha ido agregando.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Mis Reservaciones
 
-### Making a Progressive Web App
+En ésta vista se renderizan los vuelos agendados
+[Nuestros cursos](http://localhost:3000/my-reservations)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### User
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para concluir el proceso, es necesario ingresar datos personales [UserForm](http://localhost:3000/user).

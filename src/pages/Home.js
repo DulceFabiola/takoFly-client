@@ -1,21 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import API from "../services/api";
+import React, { useEffect, useState, useContext } from "react";
+import AirportsContext from "../context/Airports/AirportsContext";
 const Home = () => {
+  //ESTADO GLOBAL
+  const airportContext = useContext(AirportsContext);
+  const { airports, getAirplanes } = airportContext;
+
   const [airplanes, setAirplanes] = useState(["Mexico", "Acapulco", "Cancun"]);
   const [seats, setSeats] = useState(0);
-
-  const getAirplanes = async () => {
-    try {
-      const dataAirplanes = await API.getAllAirplanes();
-      return dataAirplanes.airports;
-    } catch (error) {
-      console.log(error);
-      console.log("error");
-    }
-  };
+  console.log("airports", airports);
   useEffect(() => {
-    // getAirplanes();
+    getAirplanes();
   }, []);
 
   return (
@@ -27,7 +21,7 @@ const Home = () => {
           <section className="container mt">
             <label>Origen:</label>
             <select className="input-outline" id="origin" name="origin">
-              {airplanes.map((city, index) => {
+              {airports.map((city, index) => {
                 return (
                   <option className="input-li" key={index} value={city}>
                     {city}
@@ -41,7 +35,7 @@ const Home = () => {
               id="destination"
               name="destination"
             >
-              {airplanes.map((city, index) => {
+              {airports.map((city, index) => {
                 return (
                   <option className="input-li" key={index} value={city}>
                     {city}

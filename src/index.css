@@ -61,6 +61,14 @@ footer {
   padding: 15px;
 }
 
+.container-form {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .mt {
   margin: 15px 0px;
 }
@@ -151,7 +159,6 @@ footer {
   padding: 0.375rem 0.75rem;
   text-decoration: none;
   margin: 5px 0px;
-  max-width: 200px;
 }
 
 .input-li {
