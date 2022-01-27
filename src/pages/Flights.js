@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import DetailsReservation from "../components/DetailsReservation";
-import AirportsContext from "../context/Airports/AirportsContext";
+import FlightsContext from "../context/Flights/FlightsContext";
 import useQuery from "./../context/Airports/useQuery";
 import { Link } from "react-router-dom";
 
@@ -8,32 +8,33 @@ const Flights = () => {
   const [reservations, setReservations] = useState([]);
 
   let query = useQuery();
-  const airportContext = useContext(AirportsContext);
-  const { airports, getAirports } = airportContext;
+  const flightCtx = useContext(FlightsContext);
+  const { flights, getFlights } = flightCtx;
   const [originSearch] = useState(query.get("origin"));
   const [destinationSearch] = useState(query.get("destination"));
 
-  const [airportsLocal, setAirportsLocal] = useState([]);
+  const [flightsLocal, setFlightsLocal] = useState([]);
+
   useEffect(() => {
-    getAirports();
+    getFlights();
   }, []);
+
   useEffect(() => {
-    setAirportsLocal(airports);
+    setFlightsLocal(flights);
     if (
       originSearch &&
       originSearch.length &&
       destinationSearch &&
       destinationSearch.length
     ) {
-      const newSearch = airports.filter(
+      const newSearch = flights.filter(
         (element) =>
           element.origin === originSearch &&
           element.destiny === destinationSearch
       );
-      setAirportsLocal([...newSearch]);
+      setFlightsLocal([...newSearch]);
     }
-  }, [originSearch, airports]);
-  console.log(airportsLocal);
+  }, [originSearch, flights]);
 
   const AddFlights = (_id) => {
     setReservations([...reservations, _id]);
@@ -41,8 +42,8 @@ const Flights = () => {
   return (
     <>
       <div className="grid-container">
-        {airportsLocal.length > 0 ? (
-          airportsLocal.map((city, index) => {
+        {flightsLocal.length > 0 ? (
+          flightsLocal.map((city, index) => {
             return (
               <div className="card" key={index}>
                 <p>

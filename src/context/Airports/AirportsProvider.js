@@ -6,20 +6,11 @@ import axiosClient from "./../../config/axios";
 
 //INITIAL STATE
 const AirportProvider = (props) => {
-  // const apiKey = process.env.REACT_APP_APIKEY;
-  // const headers = { "x-apikey": apiKey };
-
   const initialState = {
     airports: [],
     airportDetails: {
-      airportCode: "",
       name: "",
-      city: "",
-      longitude: "",
-      latitude: "",
-      timeZone: "",
-      countryCode: "",
-      fligthsUrl: "",
+      code: "",
     },
   };
   //CONFIGURACION DE REDUCER Y CREACION DE ESTADO GLOBAL
@@ -27,17 +18,6 @@ const AirportProvider = (props) => {
 
   //FUNCIONES DE CAMBIO EN ESTADO GLOBAL
   //GET AIRPORTS
-
-  // const getAirports = async () => {
-  //   const res = await axiosClient.get("airports");
-  //   const airportList = res.airports;
-  //   console.log(res);
-  //   dispatch({
-  //     type: "GET_AIRPORTS",
-  //     payload: res,
-  //   });
-  // };
-
   const getAirports = async () => {
     const res = await axiosClient.get("airports/readAll");
     const list = res.data.data;

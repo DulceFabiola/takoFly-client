@@ -1,7 +1,7 @@
 import React from "react";
 
-const DetailsFligth = () => {
-  return <div>DetailsFligth</div>;
+const DetailsFlight = () => {
+  return <div>DetailsFlight</div>;
 };
 
-export default DetailsFligth;
+export default DetailsFlight;

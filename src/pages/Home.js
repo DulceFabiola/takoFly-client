@@ -7,13 +7,9 @@ const Home = () => {
   const { airports, getAirports } = airportContext;
   const [seats, setSeats] = useState(0);
 
-  //guardado en un estado local
-  const [searchValue, setSearchValue] = useState("");
-
   useEffect(() => {
     getAirports();
   }, []);
-
   return (
     <>
       <div className="banner"></div>
@@ -25,8 +21,8 @@ const Home = () => {
             <select className="input-outline" id="origin" name="origin">
               {airports.map((city, index) => {
                 return (
-                  <option className="input-li" key={index} value={city.origin}>
-                    {city.origin}
+                  <option className="input-li" key={index} value={city.name}>
+                    {city.name}
                   </option>
                 );
               })}
@@ -39,8 +35,8 @@ const Home = () => {
             >
               {airports.map((city, index) => {
                 return (
-                  <option className="input-li" key={index} value={city.destiny}>
-                    {city.destiny}
+                  <option className="input-li" key={index} value={city.name}>
+                    {city.name}
                   </option>
                 );
               })}
