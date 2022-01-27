@@ -1,15 +1,17 @@
 import React, { useEffect, useState, useContext } from "react";
 import AirportsContext from "../context/Airports/AirportsContext";
+
 const Home = () => {
   //ESTADO GLOBAL
   const airportContext = useContext(AirportsContext);
-  const { airports, getAirplanes } = airportContext;
-
-  const [airplanes, setAirplanes] = useState(["Mexico", "Acapulco", "Cancun"]);
+  const { airports, getAirports } = airportContext;
   const [seats, setSeats] = useState(0);
-  console.log("airports", airports);
+
+  //guardado en un estado local
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
-    getAirplanes();
+    getAirports();
   }, []);
 
   return (
@@ -23,8 +25,8 @@ const Home = () => {
             <select className="input-outline" id="origin" name="origin">
               {airports.map((city, index) => {
                 return (
-                  <option className="input-li" key={index} value={city}>
-                    {city}
+                  <option className="input-li" key={index} value={city.origin}>
+                    {city.origin}
                   </option>
                 );
               })}
@@ -37,8 +39,8 @@ const Home = () => {
             >
               {airports.map((city, index) => {
                 return (
-                  <option className="input-li" key={index} value={city}>
-                    {city}
+                  <option className="input-li" key={index} value={city.destiny}>
+                    {city.destiny}
                   </option>
                 );
               })}
