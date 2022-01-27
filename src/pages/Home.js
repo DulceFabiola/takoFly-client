@@ -5,7 +5,7 @@ const Home = () => {
   //ESTADO GLOBAL
   const airportContext = useContext(AirportsContext);
   const { airports, getAirports } = airportContext;
-  const [seats, setSeats] = useState(0);
+  const [seats] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
   useEffect(() => {
     getAirports();
@@ -43,28 +43,20 @@ const Home = () => {
             </select>
             <br />
             <label className="mt">Pasajeros</label>
-            <div className="row">
-              <button
-                className="btn-outline"
-                type="button"
-                onClick={() => seats > 0 && setSeats(seats - 1)}
-              >
-                -
-              </button>
-              <p className="seats"> {seats} </p>
-              <button
-                type="button"
-                className="btn-outline"
-                onClick={() => setSeats(seats + 1)}
-              >
-                +
-              </button>
-            </div>
 
-            <button className="btn" type="submit">
-              Buscar vuelos
-            </button>
+            <select className="input-outline" id="seats" name="seats">
+              {seats.map((number, index) => {
+                return (
+                  <option className="input-li" key={index} value={number}>
+                    {number}
+                  </option>
+                );
+              })}
+            </select>
           </section>
+          <button className="btn" type="submit">
+            Buscar vuelos
+          </button>
         </form>
       </div>
     </>

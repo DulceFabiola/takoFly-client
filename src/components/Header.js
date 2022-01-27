@@ -23,7 +23,7 @@ const Header = () => {
               <Link to="/flights">Vuelos</Link>
             </li>
             <li>
-              <Link to="/my-reservations">Mis Reservaciones</Link>
+              <Link to="/my-reservations">Mis reservas</Link>
             </li>
           </ul>
         </nav>

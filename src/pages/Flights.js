@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import DetailsReservation from "../components/DetailsReservation";
 import FlightsContext from "../context/Flights/FlightsContext";
 import useQuery from "./../context/Airports/useQuery";
 import { Link } from "react-router-dom";
@@ -9,16 +8,16 @@ const Flights = () => {
 
   let query = useQuery();
   const flightCtx = useContext(FlightsContext);
-  const { flights, getFlights } = flightCtx;
+  const { flights, getFlights, addSeat } = flightCtx;
   const [originSearch] = useState(query.get("origin"));
   const [destinationSearch] = useState(query.get("destination"));
+  const [seatsSearch] = useState(query.get("seats"));
 
   const [flightsLocal, setFlightsLocal] = useState([]);
-
   useEffect(() => {
     getFlights();
+    addSeat(seatsSearch);
   }, []);
-
   useEffect(() => {
     setFlightsLocal(flights);
     if (
@@ -62,13 +61,15 @@ const Flights = () => {
                 <p>
                   <b>Price:</b> {city.price}
                 </p>
-                <button
-                  className="btn"
-                  type="submit"
-                  onClick={() => AddFlights(city._id)}
-                >
-                  Seleccionar
-                </button>
+                <Link to={`/flights/${city._id}`}>
+                  <button
+                    className="btn"
+                    type="submit"
+                    onClick={() => AddFlights(city._id)}
+                  >
+                    Seleccionar vuelo
+                  </button>
+                </Link>
               </div>
             );
           })
@@ -79,7 +80,7 @@ const Flights = () => {
           </div>
         )}
       </div>
-      <DetailsReservation />
+      {/* <DetailsReservation reservations={reservations} /> */}
     </>
   );
 };
