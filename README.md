@@ -25,7 +25,6 @@ Una vez hecho esto, crear un archivo `.env` para generar las variables de entorn
 
 ```
 REACT_APP_BACKEND_URL='API_BACKEND'
-REACT_APP_APIKEY='APP_APIKEY'
 ```
 
 Para correr la aplicación de manera local, deberá ejecutar:
@@ -69,7 +68,7 @@ Dentro de esta vista se renderiza el carrito de compras con los vuelos que el us
 ### Mis Reservaciones
 
 En ésta vista se renderizan los vuelos agendados
-[Nuestros cursos](http://localhost:3000/my-reservations)
+[Mis vuelos](http://localhost:3000/my-reservations)
 
 ### User
 
